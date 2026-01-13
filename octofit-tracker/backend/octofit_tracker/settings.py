@@ -9,7 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-46!2n_&3jubf42y(i0ibm_gk(3wo$1bwgdv+mga^%ns^&hmt*w'
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+import os
+CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+if CODESPACE_NAME:
+    ALLOWED_HOSTS.append(f'{CODESPACE_NAME}-8000.app.github.dev')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -95,8 +99,7 @@ SECRET_KEY = 'django-insecure-46!2n_&3jubf42y(i0ibm_gk(3wo$1bwgdv+mga^%ns^&hmt*w
 DEBUG = True
 
 
-# Allow all hosts
-ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
